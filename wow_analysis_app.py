@@ -13,10 +13,10 @@ from datetime import datetime
 import re
 from pathlib import Path
 
-# Import custom modules
-import attendance_analysis
-import giving_analysis
-import targeting_analysis
+# Import local modules
+from attendance_analysis import run_attendance_analysis
+from giving_analysis import run_giving_analysis
+from targeting_analysis import run_targeting_analysis
 from utils import clean_data, create_download_link
 
 # Set page config
@@ -125,13 +125,13 @@ def main():
             display_overview(all_sheets)
         
         with tab2:
-            attendance_analysis.run_attendance_analysis(all_sheets)
+            run_attendance_analysis(all_sheets)
         
         with tab3:
-            giving_analysis.run_giving_analysis(all_sheets)
+            run_giving_analysis(all_sheets)
         
         with tab4:
-            targeting_analysis.run_targeting_analysis(all_sheets)
+            run_targeting_analysis(all_sheets)
 
 def display_overview(all_sheets):
     """Displays an overview of all sheets and some summary statistics"""
